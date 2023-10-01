@@ -1,5 +1,3 @@
-package Task5;
-
 /**
  * Class Withdrawer
  * Implements Withdrawer thread class.
