@@ -1,5 +1,3 @@
-package Task5;
-
 /**
  * Class AccountManager
  * Implements account manager that twists depositor and withdrawal threads.
