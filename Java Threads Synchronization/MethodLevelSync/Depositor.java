@@ -1,5 +1,3 @@
-package Task4;
-
 /**
  * Class Depositor
  * Implements Depositor thread class. 
