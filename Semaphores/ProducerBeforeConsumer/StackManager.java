@@ -1,4 +1,9 @@
-package Task4;
+package ProducerBeforeConsumer;
+
+// ALL THE TWO PRODUCER THREADS SHOULD
+// PUSH INTO THE STACK BEFORE THE TWO 
+// CONSUMER THREADS CAN POP FROM IT
+
 // Source code for stack manager:
 
 import CharStackExceptions.*;
