@@ -1,4 +1,7 @@
-package Task2;
+package ConsumerProducerSolution;
+
+// CLASSIC SOLUTION TO THE BOUNDED BUFFER 
+// PROBLEM BY USING 3 SEMAPHORES 
 
 // Source code for stack manager:
 
