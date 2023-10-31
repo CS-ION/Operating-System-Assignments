@@ -1,4 +1,4 @@
-package Task4;
+package ProducerBeforeConsumer;
 
 class BaseThread extends Thread
 {
