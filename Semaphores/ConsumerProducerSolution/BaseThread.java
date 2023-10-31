@@ -1,4 +1,4 @@
-package Task2;
+package ConsumerProducerSolution;
 
 class BaseThread extends Thread
 {
