@@ -1,4 +1,4 @@
-package Task2;
+package ConsumerProducerSolution;
 
 // Source code for semaphore class:     
 
