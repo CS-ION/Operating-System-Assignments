@@ -1,4 +1,4 @@
-package Task4;
+package ProducerBeforeConsumer;
 // Source code for semaphore class:     
 
 class Semaphore 
