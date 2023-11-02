@@ -3,6 +3,7 @@ package ProducerBeforeConsumer;
 // ALL THE TWO PRODUCER THREADS SHOULD
 // PUSH INTO THE STACK BEFORE THE TWO 
 // CONSUMER THREADS CAN POP FROM IT
+// ONLY USING SEMAPHORES
 
 // Source code for stack manager:
 
@@ -18,11 +19,9 @@ public class StackManager
            
           // Semaphore declarations. Insert your code in the following:
            private static Semaphore mutex = new Semaphore(1);
-           private static Semaphore consumer = new Semaphore(0);
-           
-          // Counter to track the producer threads
-           private static int producerCounter = 0;
-           
+           private static Semaphore p1 = new Semaphore(0);
+           private static Semaphore p2 = new Semaphore(0);
+   
           // The main()
           public static void main(String[] argv)
           {
@@ -98,9 +97,10 @@ public class StackManager
                  private char copy; // A copy of a block returned by pop()
                  public void run()
                  {
-                	          if (producerCounter < 2) {
-                	        	  consumer.Wait();
-                	          }
+                	 
+                	          p1.Wait();
+                	          p2.Wait();
+                	 
                               System.out.println ("Consumer thread [TID=" + this.iTID + "] starts executing.");
                               for (int i = 0; i < StackManager.iThreadSteps; i++) {
                             	    try {
@@ -117,6 +117,8 @@ public class StackManager
                             	    }
                             	}
                               System.out.println ("Consumer thread [TID=" + this.iTID + "] terminates.");
+                              
+                            
                      }
           } // class Consumer
            /*
@@ -152,20 +154,18 @@ public class StackManager
                                         System.out.println("Producer thread [TID=" + this.iTID + "] stack is full.");
                                     }
                                   } 
-                                      //mutex.Wait();
-                                      producerCounter++;
-                                      if (producerCounter == 2) {
-                                          consumer.Signal();
-                                          consumer.Signal();
-                                      }
-                                      //mutex.Signal();
                                       
-                                      //Mututal exclusion does not really matter for producerCounter in this context but
-                                      //always good practise to synchronize on shared variables. However, I am not mutually
-                                      //excluding it as the requirement was to use minimum possible synchronization
+                                      if (this.iTID==3) {
+                                    	  p1.Signal();
+                                    	  p1.Signal();
+                                      }else if (this.iTID==4) {
+                                    	  p2.Signal();
+                                    	  p2.Signal();
+                                      }
+                                      
                                  
                                System.out.println("Producer thread [TID=" + this.iTID + "] terminates.");
-                              
+                            
                      }
           } // class Producer
             /*
